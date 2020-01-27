@@ -1,6 +1,6 @@
 from Connect import *
 from selenium.common.exceptions import *
-from selenium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import Keys
 
 class SNU:
     def __init__(self):

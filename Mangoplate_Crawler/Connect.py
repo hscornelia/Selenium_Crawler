@@ -9,4 +9,4 @@ def initPage():
     driver.get('https://www.mangoplate.com/')
 
 def connect(url):
-    driver.get('https://www.mangoplate.com/search' + url)
+    driver.get('https://www.mangoplate.com/search/' + url)
