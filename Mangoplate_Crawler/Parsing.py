@@ -8,6 +8,11 @@ class Parsing:
         html_doc = driver.page_source
         soup = BeautifulSoup(html_doc, 'html.parser')
         links = []
-        for link in soup.find_all('a', {'class': 'only-desktop_not'}):
-            print(link.get('ng-href'))
+
+        # list들 중에서 a 태그를 찾아야 함.
+        for link in soup.find_all('div', {'class': 'info'}):
+            ref = link.find('a', href=True)
+            links.append(ref.get('href'))
+        
+        return links
 
