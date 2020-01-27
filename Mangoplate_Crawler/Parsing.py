@@ -13,6 +13,8 @@ class Parsing:
         for link in soup.find_all('div', {'class': 'info'}):
             ref = link.find('a', href=True)
             links.append(ref.get('href'))
-        
+        print(links)
+
+        # 각각의 링크들 순회하면서 정보 받아오기
         return links
 

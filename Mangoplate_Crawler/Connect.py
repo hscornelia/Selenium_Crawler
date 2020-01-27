@@ -8,5 +8,8 @@ driver.implicitly_wait(3)
 def initPage():
     driver.get('https://www.mangoplate.com/')
 
-def connect(url):
-    driver.get('https://www.mangoplate.com/search/' + url)
+def connectSearch(url, page):
+    driver.get('https://www.mangoplate.com/search/' + url + '?keyword=' + url + '&page=' + str(page))
+
+def connectDetail(url):
+    driver.get('https://www.mangoplate.com/'+url)
