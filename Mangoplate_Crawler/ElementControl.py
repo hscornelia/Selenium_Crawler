@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 
 class Element:
     def __init__(self):
-        print('')
+        pass
 
     def searchPage(self, location, page):
         connectSearch(location, page)
