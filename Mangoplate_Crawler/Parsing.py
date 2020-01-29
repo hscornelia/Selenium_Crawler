@@ -18,3 +18,9 @@ class Parsing:
         # 각각의 링크들 순회하면서 정보 받아오기
         return links
 
+    # 맛집 리스트 내용 수집
+    def getData(self):
+        html_doc = driver.page_source
+        soup = BeautifulSoup(html_doc, 'html.parser')
+
+        

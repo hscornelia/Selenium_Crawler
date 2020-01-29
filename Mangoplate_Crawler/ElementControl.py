@@ -8,3 +8,6 @@ class Element:
 
     def searchPage(self, location, page):
         connectSearch(location, page)
+
+    def searchDetail(self, url):
+        connectDetail(url)
