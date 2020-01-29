@@ -23,4 +23,14 @@ class Parsing:
         html_doc = driver.page_source
         soup = BeautifulSoup(html_doc, 'html.parser')
 
-        
+        # title 
+        title = soup.find('h1', {'class': 'restaurant_name'}, text=True).text
+        point = soup.find('strong', {'class': 'rate-point'}).find('span', text=True).text
+        addr = soup.find('span', {'class': 'Restaurant__InfoAddress--Text'}).text
+
+        print(title)
+        print(point)
+        print(addr)
+
+
+

@@ -19,7 +19,8 @@ if __name__ == '__main__' :
         
         for link in links:
             elem.searchDetail(link)
-            
+            parser.getData()
+
     # 낙성대
     # print('낙성대역 주소')
     # for i in range(1, 4):
