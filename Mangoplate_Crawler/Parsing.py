@@ -13,7 +13,7 @@ class Parsing:
         for link in soup.find_all('div', {'class': 'info'}):
             ref = link.find('a', href=True)
             links.append(ref.get('href'))
-        print(links)
+        # print(links)
 
         # 각각의 링크들 순회하면서 정보 받아오기
         return links
@@ -27,10 +27,25 @@ class Parsing:
         title = soup.find('h1', {'class': 'restaurant_name'}, text=True).text
         point = soup.find('strong', {'class': 'rate-point'}).find('span', text=True).text
         addr = soup.find('span', {'class': 'Restaurant__InfoAddress--Text'}).text
+        tables = soup.findAll('tr')
+
+        # table 안에 labled 되지 않은 여러 내용들이 들어가 있어서 일일히 필터링 해주어야 함
+        for row in tables:
+            temp = row.find('th').text.strip()
+            if(temp == '전화번호'):
+                phone = row.find('td').text.strip()
+            if(temp == '음식 종류'):
+                category = row.find('td').text.strip()
+            if(temp == '가격대'):
+                price_range = row.find('td').text.strip()
+            
 
         print(title)
         print(point)
         print(addr)
+        print(phone)
+        print(category)
+        print(price_range)
 
 
 
