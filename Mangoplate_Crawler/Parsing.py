@@ -58,7 +58,7 @@ class Parsing:
             'pricerange': price_range,
             'category': category,
             'parking_space': False,
-            'location': '',
+            'location': '서울대입구',
         }
         connect.addRestaurant(restaurantInfo)
 
