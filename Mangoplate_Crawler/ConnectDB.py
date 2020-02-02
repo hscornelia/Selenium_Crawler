@@ -1,25 +1,27 @@
 # Database Setting
 import psycopg2
 
-hostname = 'localhost'
-username = 'sangchulkim'
-password = ''
-database = 'restaurant_api_development'
+class ConnectDB:
 
-myConnection = psycopg2.connect(
-    host=hostname,
-    database=database,
-    user=username,
-    password=password,
-)
+    hostname = 'localhost'
+    username = 'sangchulkim'
+    password = ''
+    database = 'restaurant_api_development'
+    myConnection = psycopg2.connect(
+        host = hostname,
+        database = database,
+        user = username,
+        password = password
+    )
+    cursor = myConnection.cursor()
+    
+    def __init__(self):
+        pass
 
-cur = myConnection.cursor()
-cur.execute("SELECT * FROM categories")
+    def getRestaurant(self):
+        ConnectDB.cursor.execute("SELECT * FROM categories")
+        print(ConnectDB.cursor.fetchall())
 
-print(cur.fetchall())
-
-def doQuery( conn ) :
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM pricerange")
-    for data in cur.fetchall() :
-        print(data)
+    def addRestaurant(self, restaurantInfo):
+        print(restaurantInfo)
+        pass
