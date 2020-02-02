@@ -10,6 +10,8 @@ Make Crawlers in Python using selenium library
 > - python3
 > - selenium 
 > - BeautifulSoup
+> - psycopg2
+> - pygresql
 
 > - install chrome driver
 > https://chromedriver.chromium.org/downloads
