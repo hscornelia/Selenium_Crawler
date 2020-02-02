@@ -1,4 +1,5 @@
 from Connect import *
+from ConnectDB import *
 from bs4 import BeautifulSoup
 
 class Parsing:
@@ -23,14 +24,6 @@ class Parsing:
         html_doc = driver.page_source
         soup = BeautifulSoup(html_doc, 'html.parser')
 
-        # title 
-        title = soup.find('h1', {'class': 'restaurant_name'}, text=True).text
-        point = soup.find('strong', {'class': 'rate-point'}).find('span', text=True).text
-        addr = soup.find('span', {'class': 'Restaurant__InfoAddress--Text'}).text
-        tables = soup.findAll('tr')
-
-        # table 안에 labled 되지 않은 여러 내용들이 들어가 있어서 일일히 필터링 해주어야 함
-        
         # Default Values
         title = ''
         point = ''
@@ -38,6 +31,16 @@ class Parsing:
         phone = ''
         category = ''
         price_range = ''
+        parking = False
+        time = ''
+
+        # title 
+        title = soup.find('h1', {'class': 'restaurant_name'}, text=True).text
+        point = soup.find('strong', {'class': 'rate-point'}).find('span', text=True).text
+        addr = soup.find('span', {'class': 'Restaurant__InfoAddress--Text'}).text
+        tables = soup.findAll('tr')
+
+        # table 안에 labled 되지 않은 여러 내용들이 들어가 있어서 일일히 필터링 해주어야 함
 
         for row in tables:
             temp = row.find('th').text.strip()
@@ -47,13 +50,38 @@ class Parsing:
                 category = row.find('td').text.strip()
             if(temp == '가격대'):
                 price_range = row.find('td').text.strip()
+            if(temp == '주차'):
+                park_temp = row.find('td').text.strip() 
+                if(park_temp == '주차공간없음'):
+                    parking = False
+                if (park_temp == '무료주차 가능'):
+                    parking = True
+            if(temp == '영업시간'):
+                time = row.find('td').text.strip()
 
-        print(title)
-        print(point)
-        print(addr)
-        print(phone)
-        print(category)
-        print(price_range)
+
+
+        connect = ConnectDB()
+        restaurantInfo = {
+            'name': title,
+            'point': point,
+            'address': addr,
+            'business_hour': time,
+            'pricerange': price_range,
+            'category': category,
+            'parking_space': parking,
+            'location': '',
+        }
+        connect.addRestaurant(restaurantInfo)
+
+        # print(title)
+        # print(point)
+        # print(addr)
+        # print(phone)
+        # print(category)
+        # print(price_range)
+        #print(parking)
+        #print(time)
 
 
 
