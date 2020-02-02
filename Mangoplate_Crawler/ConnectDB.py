@@ -2,9 +2,9 @@
 import psycopg2
 
 hostname = 'localhost'
-username = 'sangchulkim'
+username = 'hyunsoo_kim'
 password = ''
-database = 'restaurant_api_development'
+database = 'hyunsoo_kim'
 
 myConnection = psycopg2.connect(
     host=hostname,
