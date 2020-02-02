@@ -23,5 +23,3 @@ def doQuery( conn ) :
     cur.execute("SELECT * FROM pricerange")
     for data in cur.fetchall() :
         print(data)
-
-# hello world

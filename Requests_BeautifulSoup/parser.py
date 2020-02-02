@@ -13,11 +13,8 @@ html = req.text
 soup = BeautifulSoup(html, 'html.parser')
 
 # using CSS Selector
-titles = soup.select(
-    'span.article_tit'
-)
+titles = soup.select('span.article_tit')
 
-print(titles)
 for title in titles:
     print(title.text)
     print(title.get('href'))

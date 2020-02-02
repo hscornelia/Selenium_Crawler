@@ -30,6 +30,15 @@ class Parsing:
         tables = soup.findAll('tr')
 
         # table 안에 labled 되지 않은 여러 내용들이 들어가 있어서 일일히 필터링 해주어야 함
+        
+        # Default Values
+        title = ''
+        point = ''
+        addr = ''
+        phone = ''
+        category = ''
+        price_range = ''
+
         for row in tables:
             temp = row.find('th').text.strip()
             if(temp == '전화번호'):
@@ -38,7 +47,6 @@ class Parsing:
                 category = row.find('td').text.strip()
             if(temp == '가격대'):
                 price_range = row.find('td').text.strip()
-            
 
         print(title)
         print(point)
