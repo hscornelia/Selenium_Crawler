@@ -4,6 +4,20 @@ from bs4 import BeautifulSoup
 
 class Parsing:
 
+    def getPage(self):
+        html_doc = driver.page_source
+        soup = BeautifulSoup(html_doc, 'html.parser')
+        pages = []
+
+        for i in soup.find('p', {'class': 'paging'}).find_all('a'):
+            page = i.text.strip() 
+            pages.append(page)   
+        max_page = max(page)
+        
+        return int(max_page)
+
+
+
     # 맛집 리스트 URL 수집
     def getLink(self):
         html_doc = driver.page_source
@@ -27,7 +41,7 @@ class Parsing:
 
         # Default Values
         title = ''
-        point = ''
+        point = '0'
         addr = ''
         phone = ''
         category = ''
@@ -37,7 +51,8 @@ class Parsing:
 
         # title 
         title = soup.find('h1', {'class': 'restaurant_name'}, text=True).text
-        point = soup.find('strong', {'class': 'rate-point'}).find('span', text=True).text
+        if soup.find('strong', {'class': 'rate-point'}) is not None:
+            point = soup.find('strong', {'class': 'rate-point'}).find('span', text=True).text
         addr = soup.find('span', {'class': 'Restaurant__InfoAddress--Text'}).text
         tables = soup.findAll('tr')
 

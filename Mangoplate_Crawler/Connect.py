@@ -10,6 +10,9 @@ driver = webdriver.Chrome('/Users/hyunsoo_kim/Downloads/chromedriver')
 def initPage():
     driver.get('https://www.mangoplate.com/')
 
+def connectPage(url):
+    driver.get('https://www.mangoplate.com/search/' + url)
+
 def connectSearch(url, page):
     driver.get('https://www.mangoplate.com/search/' + url + '?keyword=' + url + '&page=' + str(page))
 
