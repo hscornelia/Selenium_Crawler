@@ -7,7 +7,7 @@ class ConnectDB:
     hostname = 'localhost'
     username = 'hyunsoo_kim'
     password = ''
-    database = 'hyunsoo_kim'
+    database = 'restaurant_api_development'
     myConnection = psycopg2.connect(
         host = hostname,
         database = database,
@@ -43,7 +43,7 @@ class ConnectDB:
                 point \
             ) \
              VALUES \
-            ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (name) DO NOTHING; COMMIT; ", \
+            ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING; COMMIT; ", \
             (
                 restaurantInfo.get('name'),
                 restaurantInfo.get('address'), 
@@ -54,7 +54,7 @@ class ConnectDB:
                 restaurantInfo.get('location'), 
                 restaurantInfo.get('pricerange'), 
                 restaurantInfo.get('category'), 
-                restaurantInfo.get('point'), 
+                restaurantInfo.get('point')
             )
         )
         print(restaurantInfo)

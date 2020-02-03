@@ -1,5 +1,4 @@
 from Connect import *
-from ElementControl import *
 from Parsing import *
 
 if __name__ == '__main__' :
@@ -8,17 +7,17 @@ if __name__ == '__main__' :
     snuUrls = []
     nkdUrls = []
 
-    elem = Element()
+    #elem = Element()
     parser = Parsing()
 
     # 서울대입구
     print('서울대 입구 주소')
     for i in range(1, 10):
-        elem.searchPage('서울대입구', i)
+        connectSearch('서울대입구', i)
         links = parser.getLink()
         
         for link in links:
-            elem.searchDetail(link)
+            connectDetail(link)
             parser.getData()
 
     # 낙성대

@@ -14,9 +14,10 @@ class Parsing:
         for link in soup.find_all('div', {'class': 'info'}):
             ref = link.find('a', href=True)
             links.append(ref.get('href'))
-        # print(links)
+            #print(links)
 
         # 각각의 링크들 순회하면서 정보 받아오기
+        #print(links)
         return links
 
     # 맛집 리스트 내용 수집
@@ -74,12 +75,12 @@ class Parsing:
         }
         connect.addRestaurant(restaurantInfo)
 
-        # print(title)
-        # print(point)
-        # print(addr)
-        # print(phone)
-        # print(category)
-        # print(price_range)
+        #print(title)
+        #print(point)
+        #print(addr)
+        #print(phone)
+        #print(category)
+        #print(price_range)
         #print(parking)
         #print(time)
 
