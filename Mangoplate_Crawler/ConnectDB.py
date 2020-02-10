@@ -8,6 +8,7 @@ class ConnectDB:
     username = 'hyunsoo_kim'
     password = ''
     database = 'restaurant_api_development'
+    
     myConnection = psycopg2.connect(
         host = hostname,
         database = database,
@@ -20,7 +21,7 @@ class ConnectDB:
         pass
 
     def getRestaurant(self):
-        ConnectDB.cursor.execute("SELECT * FROM categories")
+        ConnectDB.cursor.execute("SELECT * FROM restaurants")
         print(ConnectDB.cursor.fetchall())
 
     # 여기에 restaurant table 추가 쿼리
