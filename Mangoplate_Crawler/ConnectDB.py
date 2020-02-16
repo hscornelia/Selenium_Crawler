@@ -5,9 +5,10 @@ from datetime import datetime
 class ConnectDB:
 
     hostname = 'localhost'
-    username = 'sangchulkim'
+    username = 'hyunsoo_kim'
     password = ''
     database = 'restaurant_api_development'
+    
     myConnection = psycopg2.connect(
         host = hostname,
         database = database,
@@ -20,7 +21,7 @@ class ConnectDB:
         pass
 
     def getRestaurant(self):
-        ConnectDB.cursor.execute("SELECT * FROM categories")
+        ConnectDB.cursor.execute("SELECT * FROM restaurants")
         print(ConnectDB.cursor.fetchall())
 
     # 여기에 restaurant table 추가 쿼리
@@ -43,7 +44,7 @@ class ConnectDB:
                 point \
             ) \
              VALUES \
-            ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (name) DO NOTHING; COMMIT; ", \
+            ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING; COMMIT; ", \
             (
                 restaurantInfo.get('name'),
                 restaurantInfo.get('address'), 
@@ -54,7 +55,7 @@ class ConnectDB:
                 restaurantInfo.get('location'), 
                 restaurantInfo.get('pricerange'), 
                 restaurantInfo.get('category'), 
-                restaurantInfo.get('point'), 
+                restaurantInfo.get('point')
             )
         )
         print(restaurantInfo)
